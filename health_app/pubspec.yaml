@@ -31,6 +31,7 @@ flutter:
   assets:
     - 'lib/assets/images/welcome_bg.png'
     - 'lib/assets/images/background.png'
+    - 'lib/assets/images/v870-tang-36.jpg'
 
     - 'lib/assets/icons/linkedin.png'
     - 'lib/assets/icons/zalo-96.png'
