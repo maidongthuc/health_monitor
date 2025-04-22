@@ -5,10 +5,10 @@ class PersonalInfoScreen extends StatefulWidget {
   const PersonalInfoScreen({super.key});
 
   @override
-  _PersonalInfoScreenState createState() => _PersonalInfoScreenState();
+  PersonalInfoScreenState createState() => PersonalInfoScreenState();
 }
 
-class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
+class PersonalInfoScreenState extends State<PersonalInfoScreen> {
   String fullName = '';
   String gender = '';
   String birthDate = '';
@@ -48,7 +48,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
             color: Colors.white,
             shadows: [
               Shadow(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withAlpha(127),
                 offset: Offset(1, 1),
                 blurRadius: 3,
               ),
@@ -88,7 +88,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
                 ),
                 SizedBox(height: 10),
                 Card(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withAlpha(229),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),

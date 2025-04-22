@@ -6,10 +6,10 @@ class UserProfileSetupScreen extends StatefulWidget {
   const UserProfileSetupScreen({super.key});
 
   @override
-  _UserProfileSetupScreenState createState() => _UserProfileSetupScreenState();
+  UserProfileSetupScreenState createState() => UserProfileSetupScreenState();
 }
 
-class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
+class UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
   final _fullNameController = TextEditingController();
   final _heightController = TextEditingController();
   final _weightController = TextEditingController();
@@ -20,9 +20,10 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
   int? _selectedDay;
   int? _selectedMonth;
   int? _selectedYear;
-  List<int> _days = List.generate(31, (index) => index + 1);
-  List<int> _months = List.generate(12, (index) => index + 1);
-  List<int> _years = List.generate(100, (index) => DateTime.now().year - index);
+  final List<int> _days = List.generate(31, (index) => index + 1);
+  final List<int> _months = List.generate(12, (index) => index + 1);
+  final List<int> _years =
+      List.generate(100, (index) => DateTime.now().year - index);
 
   @override
   void dispose() {
@@ -45,6 +46,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
         _selectedYear == null ||
         height.isEmpty ||
         weight.isEmpty) {
+      if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Vui lòng nhập đầy đủ thông tin')),
       );
@@ -64,6 +66,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
           "Chiều cao: $height cm, Cân nặng: $weight kg");
 
       // Chuyển hướng đến HomePage
+      if (!mounted) return;
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
@@ -82,7 +85,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
             color: Colors.white,
             shadows: [
               Shadow(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withAlpha(127),
                 offset: Offset(1, 1),
                 blurRadius: 3,
               ),
@@ -130,7 +133,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                             prefixIcon:
                                 Icon(Icons.person, color: Colors.blue[800]),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.9),
+                            fillColor: Colors.white.withAlpha(229),
                           ),
                           style: TextStyle(color: Colors.black),
                         ),
@@ -148,7 +151,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                             ),
                             prefixIcon: Icon(Icons.wc, color: Colors.blue[800]),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.9),
+                            fillColor: Colors.white.withAlpha(229),
                           ),
                           items: _genders.map((String gender) {
                             return DropdownMenuItem<String>(
@@ -182,7 +185,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                             prefixIcon: Icon(Icons.calendar_today,
                                 color: Colors.blue[800]),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.9),
+                            fillColor: Colors.white.withAlpha(229),
                           ),
                           items: _days.map((int day) {
                             return DropdownMenuItem<int>(
@@ -212,7 +215,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                             prefixIcon: Icon(Icons.calendar_today,
                                 color: Colors.blue[800]),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.9),
+                            fillColor: Colors.white.withAlpha(229),
                           ),
                           items: _months.map((int month) {
                             return DropdownMenuItem<int>(
@@ -242,7 +245,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                             prefixIcon: Icon(Icons.calendar_today,
                                 color: Colors.blue[800]),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.9),
+                            fillColor: Colors.white.withAlpha(127),
                           ),
                           items: _years.map((int year) {
                             return DropdownMenuItem<int>(
@@ -276,7 +279,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                             prefixIcon:
                                 Icon(Icons.height, color: Colors.blue[800]),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.9),
+                            fillColor: Colors.white.withAlpha(127),
                           ),
                           keyboardType: TextInputType.number,
                           style: TextStyle(color: Colors.black),
@@ -295,7 +298,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                             prefixIcon: Icon(Icons.fitness_center,
                                 color: Colors.blue[800]),
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.9),
+                            fillColor: Colors.white.withAlpha(127),
                           ),
                           keyboardType: TextInputType.number,
                           style: TextStyle(color: Colors.black),
@@ -333,7 +336,7 @@ class _UserProfileSetupScreenState extends State<UserProfileSetupScreen> {
                       fontStyle: FontStyle.italic,
                       shadows: [
                         Shadow(
-                          color: Colors.black.withOpacity(0.5),
+                          color: Colors.black.withAlpha(127),
                           offset: Offset(1, 1),
                           blurRadius: 3,
                         ),
