@@ -14,7 +14,7 @@ class ChangePasswordScreen extends StatelessWidget {
             color: Colors.white,
             shadows: [
               Shadow(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withAlpha(127),
                 offset: Offset(1, 1),
                 blurRadius: 3,
               ),
@@ -54,7 +54,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Card(
-                  color: Colors.white.withOpacity(0.9),
+                  color: Colors.white.withAlpha(127),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),

@@ -8,10 +8,10 @@ class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  WelcomeScreenState createState() => WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class WelcomeScreenState extends State<WelcomeScreen> {
   bool _hasInternet = true;
 
   @override
@@ -31,6 +31,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     });
 
     if (!_hasInternet) {
+      if (!mounted) return;
       _showNoInternetDialog();
     }
   }
@@ -70,7 +71,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   void _showSignUpDialog() {
     showDialog(
       context: context,
-      barrierColor: Colors.black.withAlpha(127),
+      barrierColor: Colors.black.withAlpha(26),
       builder: (BuildContext context) {
         return _SignUpDialog();
       },
@@ -284,14 +285,17 @@ class __LoginDialogState extends State<_LoginDialog> {
                     if (emailOrPhone == 'admin' && password == 'admin') {
                       debugPrint("Đăng nhập thành công với tài khoản admin");
                       bool isFirstLogin = await _checkFirstLogin();
+                      if (!mounted) return;
                       Navigator.pop(context);
                       if (isFirstLogin) {
+                        if (!mounted) return;
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: (context) => UserProfileSetupScreen()),
                         );
                       } else {
+                        if (!mounted) return;
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => HomePage()),
@@ -303,6 +307,7 @@ class __LoginDialogState extends State<_LoginDialog> {
                       String? passwordError = _validatePassword(password);
 
                       if (emailOrPhoneError != null || passwordError != null) {
+                        if (!mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                               content: Text('Vui lòng kiểm tra lại thông tin')),
@@ -311,14 +316,17 @@ class __LoginDialogState extends State<_LoginDialog> {
                         debugPrint(
                             "Đăng nhập với $emailOrPhone và mật khẩu: $password");
                         bool isFirstLogin = await _checkFirstLogin();
+                        if (!mounted) return;
                         Navigator.pop(context);
                         if (isFirstLogin) {
+                          if (!mounted) return;
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => UserProfileSetupScreen()),
                           );
                         } else {
+                          if (!mounted) return;
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) => HomePage()),
