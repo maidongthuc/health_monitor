@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_app/screens/welcom_page.dart';
+import 'package:health_app/screens/chatbot_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Health App',
       debugShowCheckedModeBanner: false,
-      home: const WelcomeScreen(),
+      home: const ChatbotScreen(),
     );
   }
 }
